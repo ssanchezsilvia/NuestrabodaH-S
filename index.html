@@ -7,46 +7,46 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
+      background-image: url('boda0.png');
+      background-size: 110%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      animation: moverFondo 60s infinite alternate ease-in-out;
       font-family: 'Segoe UI', sans-serif;
       color: white;
       text-align: center;
-      background-color: transparent; 
     }
 
-    .parallax {
-      background-image: url('boda0.png');
-      height: 60vh; / 
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      opacity: 0.6; 
-      filter: blur(2px);
-    }
-
-    .content {
-      padding: 40px 20px;
-      background-color: rgba(0, 0, 0, 0); 
-      border-radius: 15px;
-      margin-top: -20px;
+    @keyframes moverFondo {
+      0% {
+        background-position: center;
+        background-size: 110%;
+      }
+      50% {
+        background-position: top;
+        background-size: 115%;
+      }
+      100% {
+        background-position: center bottom;
+        background-size: 110%;
+      }
     }
 
     h1 {
       font-size: 36px;
       margin-top: 20px;
     }
-
     h2 {
       font-size: 24px;
       margin-top: 40px;
     }
-
     #countdown {
       font-size: 24px;
       font-weight: bold;
       margin-top: 10px;
     }
-
     button {
       font-size: 16px;
       background-color: #f9d5ec;
@@ -56,11 +56,9 @@
       cursor: pointer;
       border-radius: 8px;
     }
-
     button:hover {
       background-color: #f1bcd7;
     }
-
     a {
       display: inline-block;
       font-size: 18px;
@@ -71,14 +69,12 @@
       border-radius: 8px;
       text-decoration: none;
     }
-
     a:hover {
       background-color: #e1a9c4;
     }
-
     img {
       width: 90%;
-      max-width: 500px; /* Reducir tamaño de las imágenes */
+      max-width: 600px;
       margin: 20px auto;
       display: block;
       border-radius: 10px;
@@ -88,64 +84,60 @@
 </head>
 <body>
 
-  <div class="parallax"></div>
+  <h1>Silvia & Héctor</h1>
+  <p>¡Estamos muy felices de compartir este día tan especial con ustedes!</p>
 
-  <div class="content">
-    <h1>Silvia & Héctor</h1>
-    <p>¡Estamos muy felices de compartir este día tan especial con ustedes!</p>
+  <h2>🎵 Nuestra canción</h2>
+  <button onclick="document.getElementById('musica').play()">▶️ Reproducir "Fuera del Planeta"</button>
+  <audio id="musica" loop>
+    <source src="Manuel Medrano - Afuera del Planeta (Lyric Video).mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
 
-    <h2>🎵 Nuestra canción</h2>
-    <button onclick="document.getElementById('musica').play()">▶️ Reproducir "Fuera del Planeta"</button>
-    <audio id="musica" loop>
-      <source src="Manuel Medrano - Afuera del Planeta (Lyric Video).mp3" type="audio/mpeg">
-      Tu navegador no soporta audio.
-    </audio>
+  <h2>⏳ Cuenta regresiva</h2>
+  <div id="countdown"></div>
 
-    <h2>⏳ Cuenta regresiva</h2>
-    <div id="countdown"></div>
+  <script>
+    const weddingDate = new Date("2025-07-19T15:00:00").getTime();
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
 
-    <script>
-      const weddingDate = new Date("2025-07-19T15:00:00").getTime();
-      const timer = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
+      if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "¡Ya llegó el gran día!";
+        return;
+      }
 
-        if (distance < 0) {
-          clearInterval(timer);
-          document.getElementById("countdown").innerHTML = "¡Ya llegó el gran día!";
-          return;
-        }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML =
+        `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    }, 1000);
+  </script>
 
-        document.getElementById("countdown").innerHTML =
-          `${days} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
-      }, 1000);
-    </script>
+  <h2>📍 Ubicación</h2>
+  <a href="https://www.google.com/maps/place/Sal%C3%B3n+Acaponeta/@32.6314915,-115.4235475,17z/data=!3m1!4b1!4m6!3m5!1s0x80d77173d64f2d11:0x2da3251283345985!8m2!3d32.631487!4d-115.4209726" target="_blank">
+    Ver en Google Maps
+  </a>
 
-    <h2>📍 Ubicación</h2>
-    <a href="https://www.google.com/maps/place/Sal%C3%B3n+Acaponeta/@32.6314915,-115.4235475,17z/data=!3m1!4b1!4m6!3m5!1s0x80d77173d64f2d11:0x2da3251283345985!8m2!3d32.631487!4d-115.4209726" target="_blank">
-      Ver en Google Maps
-    </a>
+  <h2>✅ Confirmar asistencia</h2>
+  <a href="https://forms.gle/hY5fYd1RXAG8iTVQA">
+    Confirmar aquí
+  </a>
 
-    <h2>✅ Confirmar asistencia</h2>
-    <a href="https://forms.gle/HKUDJxP6i6wyr3yi6" target="_blank">
-      Confirmar aquí
-    </a>
-
-    <h2>💌 Nuestra Invitación</h2>
-    <img src="boda1.png" alt="Página 1">
-    <img src="boda2.png" alt="Página 2">
-    <img src="boda3.png" alt="Página 3">
-    <img src="boda4.png" alt="Página 4">
-    <img src="boda5.png" alt="Página 5">
-    <img src="boda6.png" alt="Página 6">
-    <img src="boda7.png" alt="Página 7">
-    <img src="boda8.png" alt="Página 8">
-  </div>
+  <h2>💌 Nuestra Invitación</h2>
+  <img src="boda1.png" alt="Página 1">
+  <img src="boda2.png" alt="Página 2">
+  <img src="boda3.png" alt="Página 3">
+  <img src="boda4.png" alt="Página 4">
+  <img src="boda5.png" alt="Página 5">
+  <img src="boda6.png" alt="Página 6">
+  <img src="boda7.png" alt="Página 7">
+  <img src="boda8.png" alt="Página 8">
 
 </body>
 </html>
