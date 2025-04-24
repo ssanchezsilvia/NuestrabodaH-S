@@ -10,22 +10,25 @@
       font-family: 'Segoe UI', sans-serif;
       color: white;
       text-align: center;
-      background-color: olivedrab; 
+      background-color: transparent; /* Fondo transparente */
     }
 
     .parallax {
       background-image: url('boda0.png');
-      height: 100vh;
+      height: 60vh; /* Reduje la altura del fondo */
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      opacity: 0.3; /
-   }
+      opacity: 0.4; /* Fondo más transparente */
+      filter: blur(2px); /* Desenfoque del fondo */
+    }
+
     .content {
       padding: 40px 20px;
-      background-color: rgba(0, 0, 0, 0.5); /
+      background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro pero no completamente opaco */
       border-radius: 15px;
+      margin-top: -20px;
     }
 
     h1 {
@@ -75,7 +78,7 @@
 
     img {
       width: 90%;
-      max-width: 500px; 
+      max-width: 500px; /* Reducir tamaño de las imágenes */
       margin: 20px auto;
       display: block;
       border-radius: 10px;
